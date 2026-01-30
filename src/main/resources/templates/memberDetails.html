@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Page</title>
+</head>
+<style>
+    .info { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
+</style>
+<body>
+<div class="info"></div>
+<h2>Member Details</h2>
+
+<div class="info" th:if="${member != null}">
+    <p><strong>Full Name:</strong> <span th:text="${member.fullName}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${member.email}"></span></p>
+    <p><strong>Phone:</strong> <span th:text="${member.phone}"></span></p>
+    <p><strong>Registration Date:</strong> <span th:text="${member.registrationDate}"></span></p>
+</div>
+
+<h3>Borrowed Books</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${member.borrowedBooks}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.category != null ? book.category.name : 'N/A'}"></td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(member.borrowedBooks)}">
+        <td colspan="3" style="text-align: center;">No books borrowed yet.</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/member">Back to Members List</a>
+
+</body>
+</html>

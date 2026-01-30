@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+</head>
+<body>
+<h2>Add New Category</h2>
+
+<form action="/category/add" method="post">
+    <div>
+        <label>Category Name:</label><br>
+        <input type="text" name="name" required placeholder="e.g. Programming">
+    </div><br>
+
+    <div>
+        <label>Description:</label><br>
+        <textarea name="description" placeholder="Description of this category"></textarea>
+    </div><br>
+
+    <button type="submit">Save Category</button>
+    <a href="/categories">Cancel</a>
+</form>
+</body>
+</html>

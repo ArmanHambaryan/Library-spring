@@ -1,0 +1,33 @@
+package am.itspace.libraryspring.controller;
+
+import am.itspace.libraryspring.model.Category;
+import am.itspace.libraryspring.repository.CategoryRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+@RequiredArgsConstructor
+public class CategoryController {
+    private final CategoryRepository categoryRepository;
+
+
+    @GetMapping("/category")
+    public String categoriesPage(ModelMap modelMap) {
+        modelMap.addAttribute("categories", categoryRepository.findAll());
+        return "category";
+    }
+    @GetMapping("/category/add")
+    public String addCategoryPage() {
+        return "addCategory";
+    }
+
+    @PostMapping("/category/add")
+    public String addCategory(@ModelAttribute Category category) {
+        categoryRepository.save(category);
+        return "redirect:/category";
+    }
+}
