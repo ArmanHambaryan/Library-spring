@@ -2,12 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <title>Library Management System</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 32px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .menu-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-card {
+            background: white;
+            width: 200px;
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            color: #34495e;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            background-color: #3498db;
+            color: white;
+        }
+
+        .menu-card i {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-<a href = "/book">Book</a><br>
-<a href = "/category">Category</a><br>
-<a href = "/member">Member</a>
+
+<h1>Library Management System</h1>
+
+<div class="menu-container">
+    <a href="/book" class="menu-card">
+        <span>📚</span><br>
+        Books
+    </a>
+
+    <a href="/category" class="menu-card">
+        <span>📂</span><br>
+        Categories
+    </a>
+
+    <a href="/member" class="menu-card">
+        <span>👥</span><br>
+        Members
+    </a>
+</div>
 
 </body>
 </html>

@@ -5,41 +5,134 @@
     <title>Add Book</title>
 </head>
 <body>
-<h2>Add New Book</h2>
-<form action="/books/add" method="post">
-  <div>
-    <label>Title:</label>
-    <input type="text" name="title" required>
-  </div><br>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Book</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-  <div>
-    <label>Author:</label>
-    <input type="text" name="author" required>
-  </div><br>
-  <div>
-    <label>Genre:</label>
-    <input type="text" name="genre" required>
-  </div><br>
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 350px;
+    }
 
-  <div>
-    <label>Year:</label>
-    <input type="number" name="year" required>
-  </div><br>
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
 
-  <div>
-    <label>Category:</label>
-    <select name="category" required>
-      <option value="">-- Select Category --</option>
-      <option th:each="cat : ${categories}"
-              th:value="${cat.id}"
-              th:text="${cat.name}"></option>
-    </select>
-  </div><br>
+    div {
+      margin-bottom: 15px;
+    }
 
-  <input type="submit" value="Submit"><br>
-  <a href="/book">Cancel</a>
-</form>
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #555;
+    }
 
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0,123,255,0.2);
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #888;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      color: #e74c3c;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Add New Book</h2>
+  <form action="/books/add" method="post">
+    <div>
+      <label>Title:</label>
+      <input type="text" name="title" required>
+    </div>
+
+    <div>
+      <label>Author:</label>
+      <input type="text" name="author" required>
+    </div>
+
+    <div>
+      <label>Genre:</label>
+      <input type="text" name="genre" required>
+    </div>
+
+    <div>
+      <label>Year:</label>
+      <input type="number" name="year" required>
+    </div>
+
+    <div>
+      <label>Category:</label>
+      <select name="category" required>
+        <option value="">-- Select Category --</option>
+        <option th:each="cat : ${categories}"
+                th:value="${cat.id}"
+                th:text="${cat.name}"></option>
+      </select>
+    </div>
+
+    <input type="submit" value="Submit">
+    <a href="/book">Cancel</a>
+  </form>
+</div>
 
 </body>
 </html>

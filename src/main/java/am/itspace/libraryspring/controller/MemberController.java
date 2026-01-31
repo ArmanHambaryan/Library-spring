@@ -36,7 +36,6 @@ public class MemberController {
 
     @GetMapping("/members/{id}")
     public String memberDetailsPage(@PathVariable("id") int id, ModelMap modelMap) {
-        // Փորձում ենք գտնել անդամին բազայից
         memberRepository.findById(id).ifPresent(member -> {
             modelMap.addAttribute("member", member);
         });

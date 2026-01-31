@@ -1,19 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Member Page</title>
+    <title>Member Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            padding: 40px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .info-card p {
+            margin: 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #f1f1f1;
+            padding-bottom: 8px;
+        }
+
+        .info-card strong {
+            color: #555;
+            width: 150px;
+            display: inline-block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .empty-msg {
+            color: #888;
+            font-style: italic;
+            background: #fafafa;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<style>
-    .info { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
-</style>
 <body>
-<div class="info"></div>
+
 <h2>Member Details</h2>
 
-<div class="info" th:if="${member != null}">
+<div class="info-card" th:if="${member != null}">
     <p><strong>Full Name:</strong> <span th:text="${member.fullName}"></span></p>
     <p><strong>Email:</strong> <span th:text="${member.email}"></span></p>
     <p><strong>Phone:</strong> <span th:text="${member.phone}"></span></p>
@@ -31,18 +108,20 @@
     </thead>
     <tbody>
     <tr th:each="book : ${member.borrowedBooks}">
-        <td th:text="${book.title}"></td>
+        <td th:text="${book.title}" style="font-weight: 600;"></td>
         <td th:text="${book.author}"></td>
-        <td th:text="${book.category != null ? book.category.name : 'N/A'}"></td>
+        <td>
+            <span style="background: #e1f5fe; color: #01579b; padding: 4px 8px; border-radius: 4px; font-size: 12px;"
+                  th:text="${book.category != null ? book.category.name : 'N/A'}"></span>
+        </td>
     </tr>
     <tr th:if="${#lists.isEmpty(member.borrowedBooks)}">
-        <td colspan="3" style="text-align: center;">No books borrowed yet.</td>
+        <td colspan="3" class="empty-msg" style="text-align: center;">No books borrowed yet.</td>
     </tr>
     </tbody>
 </table>
 
-<br>
-<a href="/member">Back to Members List</a>
+<a href="/member" class="back-link">← Back to Members List</a>
 
 </body>
 </html>
