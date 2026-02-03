@@ -1,7 +1,7 @@
 package am.itspace.libraryspring.controller;
 
 import am.itspace.libraryspring.model.Category;
-import am.itspace.libraryspring.repository.CategoryRepository;
+import am.itspace.libraryspring.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @RequiredArgsConstructor
 public class CategoryController {
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
 
     @GetMapping("/category")
     public String categoriesPage(ModelMap modelMap) {
-        modelMap.addAttribute("categories", categoryRepository.findAll());
+        modelMap.addAttribute("categories", categoryService.findAll());
         return "category";
     }
     @GetMapping("/category/add")
@@ -27,7 +27,7 @@ public class CategoryController {
 
     @PostMapping("/category/add")
     public String addCategory(@ModelAttribute Category category) {
-        categoryRepository.save(category);
+        categoryService.save(category);
         return "redirect:/category";
     }
 }

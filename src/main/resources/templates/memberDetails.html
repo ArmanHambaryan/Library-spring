@@ -91,6 +91,11 @@
 <h2>Member Details</h2>
 
 <div class="info-card" th:if="${member != null}">
+    <p><strong>Picture:</strong> <span> <img th:if="${member.getPictureName() != null && member.getPictureName().equals('')}"
+                                             th:src="@{/image/get(picName=${member.pictureName})}" width="50">
+        <img th:if="${member.getPictureName() == null || member.getPictureName().equals('')}" th:src="@{/img.png}"
+             width="50">></span></p>
+
     <p><strong>Full Name:</strong> <span th:text="${member.fullName}"></span></p>
     <p><strong>Email:</strong> <span th:text="${member.email}"></span></p>
     <p><strong>Phone:</strong> <span th:text="${member.phone}"></span></p>

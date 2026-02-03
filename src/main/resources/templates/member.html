@@ -16,7 +16,10 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
-        a { text-decoration: none; }
+
+        a {
+            text-decoration: none;
+        }
 
         .nav-links {
             margin-bottom: 25px;
@@ -39,13 +42,14 @@
         .add-btn-style:hover {
             background-color: #4338ca;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             background: white;
             border-radius: 10px;
-            overflow: hidden; /* Անկյունները կլոր պահելու համար */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         th {
@@ -66,6 +70,7 @@
         tr:hover {
             background-color: #f9fafb;
         }
+
         .badge {
             display: inline-block;
             padding: 2px 8px;
@@ -75,6 +80,7 @@
             background-color: #e0e7ff;
             color: #4338ca;
         }
+
         .details-link {
             color: #4f46e5;
             font-weight: 600;
@@ -101,6 +107,7 @@
     <thead>
     <tr>
         <th>ID</th>
+        <th>Picture</th>
         <th>Full Name</th>
         <th>Email</th>
         <th>Borrowed Books</th>
@@ -110,6 +117,11 @@
     <tbody>
     <tr th:each="m : ${members}">
         <td th:text="${m.id}"></td>
+        <td>
+            <img th:if="${m.getPictureName() != null && !m.getPictureName().equals('')}" th:src="@{/image/get(picName=${m.pictureName})}" width="50">
+            <img th:if="${m.getPictureName() == null || m.getPictureName().equals('')}" th:src="@{/img.png}" width="50">
+
+        </td>
         <td th:text="${m.fullName}" style="color: #111827; font-weight: 500;"></td>
         <td th:text="${m.email}"></td>
         <td>

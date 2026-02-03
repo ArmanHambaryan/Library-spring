@@ -36,6 +36,8 @@ public class Member {
     @Column(name = "registration_date")
     private Date registrationDate;
 
+    private String pictureName;
+
     @ManyToMany
     @JoinTable(
             name = "member_book",

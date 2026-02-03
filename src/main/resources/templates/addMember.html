@@ -24,7 +24,7 @@
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             width: 100%;
             max-width: 400px;
             position: relative;
@@ -103,7 +103,7 @@
     <a href="/" class="back-link">← Back</a>
     <h2>Add New Member</h2>
 
-    <form action="/members/add" method="post">
+    <form action="/members/add" method="post" , enctype="multipart/form-data">
         <div class="form-group">
             <label>Full Name:</label>
             <input type="text" name="fullName" required placeholder="John Doe">
@@ -122,6 +122,10 @@
         <div class="form-group">
             <label>Registration Date:</label>
             <input type="date" name="registrationDate" required>
+        </div>
+        <div>
+            <label>Image</label>
+            <input type="file" name="pic" required>
         </div>
 
         <button type="submit">Save Member</button>
